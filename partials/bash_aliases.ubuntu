@@ -1,0 +1,6 @@
+# apt
+alias get="apt-get install"
+alias search="apt-cache search"
+alias remove="apt-get remove"
+alias update="apt-get update"
+alias upgrade="apt-get upgrade"

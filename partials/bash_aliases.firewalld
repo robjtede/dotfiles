@@ -1,0 +1,13 @@
+alias fw="firewall-cmd"
+alias fwr="firewall-cmd --reload"
+
+function fwl () {
+	local zones=$(firewall-cmd --get-active-zones | grep -v interfaces)
+	
+	for i in $zones; do
+		firewall-cmd --zone $i --list-all
+	done
+	
+	echo 'Direct Rules:'
+	firewall-cmd --direct --get-all-rules
+}

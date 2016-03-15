@@ -1,6 +1,9 @@
 # general
 alias \]="cd .."
 alias cl="clear"
+alias vi="vim"
+alias pings="/bin/ping"
+alias ping="/bin/ping -c 5"
 
 # ls
 alias l="ls -lh"
@@ -12,4 +15,3 @@ alias lla="ls -lah"
 alias vbash="vim ~/.bashrc && source ~/.bashrc"
 alias vbashprofile="vim ~/.bash_profile && source ~/.bash_profile"
 alias vbashalias="vim ~/.bash_aliases && source ~/.bash_aliases"
-

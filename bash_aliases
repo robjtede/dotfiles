@@ -3,7 +3,7 @@ alias \]="cd .."
 alias cl="clear"
 alias vi="vim"
 alias pings="/bin/ping"
-alias ping="/bin/ping -c 5"
+alias ping="/bin/ping -c 5 -i 0.5"
 
 # ls
 alias l="ls -lh"

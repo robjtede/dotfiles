@@ -22,10 +22,21 @@ alias sshconfig="vim ~/.ssh/config"
 # IP getter
 alias myip1="curl -s api.robjte.de/ip"
 alias myip2="dig +short myip.opendns.com @resolver1.opendns.com"
-funtion myip () {
+function myip () {
   echo 'robjte.de => '
   myip1
   echo
   echo '  opendns => '
   myip2
+}
+
+function swap () {
+  local TMPFILE=tmp.$$
+  mv "$1" $TMPFILE
+  mv "$2" "$1"
+  mv $TMPFILE "$2"
+}
+
+function lsn () {
+  ls "${@:2}" | head -n $1 | tail -n 1
 }

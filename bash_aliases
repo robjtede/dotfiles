@@ -32,9 +32,9 @@ alias sshconfig="vim ~/.ssh/config"
 alias myip1="curl -s api.robjte.de/ip"
 alias myip2="dig +short myip.opendns.com @resolver1.opendns.com"
 function myip () {
-  echo 'robjte.de => '
+  echo -n 'robjte.de => '
   myip1
   echo
-  echo '  opendns => '
+  echo -n '  opendns => '
   myip2
 }

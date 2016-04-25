@@ -1,0 +1,18 @@
+# startup commands
+# insert ^V ^M after each stuff command
+screen -t glances
+select 0
+stuff "glances"
+
+screen -t iftop
+select 1
+stuff "iftop"
+
+screen -t bash
+select 3
+
+
+# custom status bar
+caption always "%{= r}%=%?%F%{+b w}%?%3n$ %t%? [%h]%? "
+hardstatus alwayslastline "%Lw"
+hardstatus alwayslastline " %{b kw}%H %{w}| %{g}%c %{w}| %{y}%d/%m/%Y %{w}| %{r}%l %{w}| %{-b kw}%u %-Lw%{= rW}%50> %n%f %t %{-}%+Lw%< "

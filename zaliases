@@ -1,0 +1,20 @@
+# general
+alias \]="cd .."
+alias cl="clear"
+alias vi="vim"
+alias pings="/bin/ping"
+alias ping="/bin/ping -c 5 -i 0.5"
+function swap () {
+  local TMPFILE=tmp.$$
+  mv "$1" $TMPFILE
+  mv "$2" "$1"
+  mv $TMPFILE "$2"
+}
+
+# bash configs
+alias vzsh="vim ~/.bashrc && source ~/.bashrc"
+alias vzshaliases="vim ~/.bash_aliases && source ~/.bash_aliases"
+alias sshconfig="vim ~/.ssh/config"
+
+# IP getter
+alias myip="dig +short myip.opendns.com @resolver1.opendns.com"

@@ -1,5 +1,0 @@
-# systemd
-alias start="systemctl start"
-alias stop="systemctl stop"
-alias restart="systemctl restart"
-alias status="systemctl status"

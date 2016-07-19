@@ -1,15 +1,19 @@
+startup_message off
+
+vbell off
+
+defscrollback 40000
+altscreen on
+
 # startup commands
 # insert ^V ^M after each stuff command
 screen -t glances
-select 0
 stuff "glances"
 
 screen -t iftop
-select 1
 stuff "iftop"
 
-screen -t bash
-select 3
+screen -t zsh
 
 
 # custom status bar

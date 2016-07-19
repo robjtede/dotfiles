@@ -1,0 +1,6 @@
+interface:      eth0
+port-display:   on
+show-totals:    yes
+line-display:   one-line-both
+max-bandwidth:  20M
+show-bars:      yes

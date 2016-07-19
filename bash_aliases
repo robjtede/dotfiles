@@ -13,13 +13,6 @@ function swap () {
 
 
 # ls
-alias l="ls -lh"
-alias ll="ls -lh"
-alias la="ls -lAh"
-alias lla="ls -lah"
-function lsn () {
-  ls "${@:2}" | head -n $1 | tail -n 1
-}
 
 # bash configs
 alias vbash="vim ~/.bashrc && source ~/.bashrc"

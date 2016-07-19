@@ -4,6 +4,7 @@ alias cl="clear"
 alias vi="vim"
 alias pings="/bin/ping"
 alias ping="/bin/ping -c 5 -i 0.5"
+
 function swap () {
   local TMPFILE=tmp.$$
   mv "$1" $TMPFILE
@@ -11,9 +12,14 @@ function swap () {
   mv $TMPFILE "$2"
 }
 
+function mkcd () {
+  mkdir "$1"
+  cd "$1"
+}
+
 # bash configs
-alias vzsh="vim ~/.bashrc && source ~/.bashrc"
-alias vzshaliases="vim ~/.bash_aliases && source ~/.bash_aliases"
+alias vz="vim ~/.bashrc && source ~/.bashrc"
+alias vzaliases="vim ~/.bash_aliases && source ~/.bash_aliases"
 alias sshconfig="vim ~/.ssh/config"
 
 # IP getter

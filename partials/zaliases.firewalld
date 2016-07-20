@@ -2,7 +2,9 @@ alias fw="firewall-cmd"
 alias fwr="firewall-cmd --reload"
 
 function fwl () {
-  local zones=$(firewall-cmd --get-active-zones | grep -v interfaces)
+  # converts output to zsh array ()
+  # @f flag split on new line
+  zones=("${(@f)$(firewall-cmd --get-active-zones | grep -v interfaces)}")
 
   for i in $zones; do
     firewall-cmd --zone $i --list-all

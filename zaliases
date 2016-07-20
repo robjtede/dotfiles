@@ -17,9 +17,10 @@ function mkcd () {
   cd "$1"
 }
 
-# bash configs
-alias vz="vim ~/.bashrc && source ~/.bashrc"
-alias vzaliases="vim ~/.bash_aliases && source ~/.bash_aliases"
+# zsh configs
+alias vz="vim ~/.zshrc && source ~/.zshrc"
+alias vzaliases="vim ~/.zaliases && source ~/.zaliases"
+
 alias sshconfig="vim ~/.ssh/config"
 
 # IP getter

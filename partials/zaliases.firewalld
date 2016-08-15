@@ -1,5 +1,7 @@
 alias fw="firewall-cmd"
+alias fwp="firewall-cmd --permanent"
 alias fwr="firewall-cmd --reload"
+alias fwrp="firewall-cmd --runtime-to-permanent"
 
 function fwl () {
   # converts output to zsh array ()

@@ -1,5 +1,7 @@
 #!/bin/bash
 
+OS=$(uname -s)
+
 # install ZSH
 sudo apt-get install zsh
 
@@ -11,15 +13,37 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:
 
 # copy theme and choose it
 cp ./robjtede.zsh-theme ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/
-sed -i ".bak" "/^ZSH_THEME=/ s/ZSH_THEME=\".*\"/ZSH_THEME=\"robjtede\"/" ~/.zshrc
+exp="/^ZSH_THEME=/ s/ZSH_THEME=\".*\"/ZSH_THEME=\"robjtede\"/"
+if [[ $OS == "Linux" ]]; then
+  sed -ibak -r $exp ~/.zshrc
+elif [[ $OS == "Darwin" ]]; then
+  sed -i ".bak" -E $exp ~/.zshrc
+fi
+
 
 # uncomment and change update frequency
-sed -i ".bak" "/^\(# \)\{0,1\}export UPDATE_ZSH_DAYS=[0-9]\{1,\}/ s/\(# \)\{0,1\}//" ~/.zshrc
-sed -i ".bak" "/^\(# \)\{0,1\}export UPDATE_ZSH_DAYS=[0-9]\{1,\}/ s/[0-9]\{1,\}/6/" ~/.zshrc
+exp1="/^\(# \)?export UPDATE_ZSH_DAYS=[0-9]+/ s/^\(# \)?//"
+exp2="/^\(# \)?export UPDATE_ZSH_DAYS=[0-9]+/ s/[0-9]+/6/"
+
+if [[ $OS == "Linux" ]]; then
+  sed -ibak -r $exp1 ~/.zshrc
+  sed -ibak -r $exp2 ~/.zshrc
+elif [[ $OS == "Darwin" ]]; then
+  sed -i ".bak" -E $exp1 ~/.zshrc
+  sed -i ".bak" -E $exp2 ~/.zshrc
+fi
 
 # uncomment correction and waiting dots
-sed -i ".bak" "/^\(# \)\{0,1\}ENABLE_CORRECTION=\{1,\}/ s/\(# \)\{0,1\}//" ~/.zshrc
-sed -i ".bak" "/^\(# \)\{0,1\}COMPLETION_WAITING_DOTS=\{1,\}/ s/\(# \)\{0,1\}//" ~/.zshrc
+exp1="/^\(# \)?ENABLE_CORRECTION=+/ s/^\(# \)\?//"
+exp2="/^\(# \)?COMPLETION_WAITING_DOTS=+/ s/^\(# \)\?//"
+
+if [[ $OS == "Linux" ]]; then
+  sed -ibak -r $exp1 ~/.zshrc
+  sed -ibak -r $exp2 ~/.zshrc
+elif [[ $OS == "Darwin" ]]; then
+  sed -i ".bak" -E $exp1 ~/.zshrc
+  sed -i ".bak" -E $exp2 ~/.zshrc
+fi
 
 # insert primary aliases
 cp ./zaliases ~/.zaliases
@@ -85,15 +109,20 @@ read zshshplin
 if [[ $zshshplin == "y" ]]; then plins="zsh-syntax-highlighting $plins"; fi
 
 # insert plugins into zshrc
-# -i for osx compatibility
-sed -i ".bak" "/^plugins=/ s/plugins=\(.*\)/plugins=\($plins\)/" ~/.zshrc
+exp="/^plugins=/ s/plugins=\(.*\)/plugins=\($plins\)/"
+if [[ $OS == "Linux" ]]; then
+  sed -ibak -r $exp ~/.zshrc
+elif [[ $OS == "Darwin" ]]; then
+  sed -i ".bak" -E $exp ~/.zshrc
+fi
 
 # correct window titles in screen
 echo '
 # Set title of window to command
 preexec () {
   echo -ne "\ek${1%% *}\e\\"
-}' >> ~/.zshrc
+}
+' >> ~/.zshrc
 
 
 # copy dotfiles

@@ -132,5 +132,5 @@ cp ./vimrc ~/.vimrc
 cp ./iftoprc ~/.iftoprc
 cp ./zprofile ~/.zprofile
 
-chsh --shell=(which zsh)
+chsh --shell=$(which zsh)
 zsh

@@ -14,7 +14,7 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:
 
 echo copy theme and select it
 cp ./robjtede.zsh-theme ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/
-exp="/^ZSH_THEME=/ s/ZSH_THEME=\".*\"/ZSH_THEME=\"robjtede\"/"
+exp="/^ZSH_THEME\=/ s/ZSH_THEME=\".*\"/ZSH_THEME=\"robjtede\"/"
 if [[ $OS == "Linux" ]]; then
   sed -ibak -r -e $exp -f ~/.zshrc
 elif [[ $OS == "Darwin" ]]; then
@@ -23,8 +23,8 @@ fi
 
 
 echo uncomment and change update frequency
-exp1="/^\(# \)?export UPDATE_ZSH_DAYS=[0-9]+/ s/^\(# \)?//"
-exp2="/^\(# \)?export UPDATE_ZSH_DAYS=[0-9]+/ s/[0-9]+/6/"
+exp1="/^\(# \)?export UPDATE_ZSH_DAYS\=[0-9]+/ s/^\(# \)?//"
+exp2="/^\(# \)?export UPDATE_ZSH_DAYS\=[0-9]+/ s/[0-9]+/6/"
 
 if [[ $OS == "Linux" ]]; then
   sed -ibak -r -e $exp1 -f ~/.zshrc

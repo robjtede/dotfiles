@@ -14,7 +14,7 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:
 
 echo copy theme and select it
 cp ./robjtede.zsh-theme ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/
-exp="/^ZSH_THEME/ s/ZSH_THEME=\"[^\"]*\"/ZSH_THEME=\"themename\"/"
+exp="/^ZSH_THEME/ s/ZSH_THEME=\"[^\"]*\"/ZSH_THEME=\"robjtede\"/"
 if [[ $OS == "Linux" ]]; then
   sed -i.bak -r -e "$exp" ~/.zshrc
 elif [[ $OS == "Darwin" ]]; then
@@ -131,3 +131,6 @@ cp ./screenrc ~/.screenrc
 cp ./vimrc ~/.vimrc
 cp ./iftoprc ~/.iftoprc
 cp ./zprofile ~/.zprofile
+
+chsh --shell=(which zsh)
+zsh

@@ -66,7 +66,7 @@ echo "Choose ZSH plugins:"
 
 # common aliases
 echo -n "common aliases: [y/N] "
-read caplugin
+read caplin
 if [[ $caplin == "y" ]]; then plins="common-aliases $plins"; fi
 
 # git

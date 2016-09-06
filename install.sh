@@ -22,7 +22,7 @@ sed -i ".bak" "/^\(# \)\{0,1\}ENABLE_CORRECTION=\{1,\}/ s/\(# \)\{0,1\}//" ~/.zs
 sed -i ".bak" "/^\(# \)\{0,1\}COMPLETION_WAITING_DOTS=\{1,\}/ s/\(# \)\{0,1\}//" ~/.zshrc
 
 # insert primary aliases
-cat ./zaliases > ~/.zaliases
+cp ./zaliases ~/.zaliases
 
 # choose aliases
 
@@ -87,3 +87,17 @@ if [[ $zshshplin == "y" ]]; then plins="zsh-syntax-highlighting $plins"; fi
 # insert plugins into zshrc
 # -i for osx compatibility
 sed -i ".bak" "/^plugins=/ s/plugins=\(.*\)/plugins=\($plins\)/" ~/.zshrc
+
+# correct window titles in screen
+echo '
+# Set title of window to command
+preexec () {
+  echo -ne "\ek${1%% *}\e\\"
+}' >> ~/.zshrc
+
+
+# copy dotfiles
+cp ./screenrc ~/.screenrc
+cp ./vimrc ~/.vimrc
+cp ./iftoprc ~/.iftoprc
+cp ./zprofile ~/.zprofile

@@ -9,6 +9,10 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/mas
 # install zsh-syntax-highlighting
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 
+# copy theme and choose it
+cp ./robjtede.zsh-theme ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/
+sed -i ".bak" "/^ZSH_THEME=/ s/ZSH_THEME=\".*\"/ZSH_THEME=\"robjtede\"/" ~/.zshrc
+
 # insert primary aliases
 cat ./zaliases > ~/.zaliases
 
@@ -74,4 +78,4 @@ if [[ $zshshplin == "y" ]]; then plins="zsh-syntax-highlighting $plins"; fi
 
 # insert plugins into zshrc
 # -i for osx compatibility
-sed -i ".bak" "/^plugins=/ s/plugins=\((.*)\)/plugins=\($plins\)/" ~/.zshrc
+sed -i ".bak" "/^plugins=/ s/plugins=\(.*\)/plugins=\($plins\)/" ~/.zshrc

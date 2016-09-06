@@ -10,14 +10,68 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/mas
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 
 # insert primary aliases
-cat zaliases > ~/.zaliases
+cat ./zaliases > ~/.zaliases
 
-echo "Do you want firewalld aliases?"
+# choose aliases
+
+echo -n "Do you want firewalld aliases? [y/N] "
 read fwd
 if [[ $fwd == "y" ]]; then
   echo >> ~/.zaliases
-  cat partials/zaliases.firewalld >> ~/.zaliases
+  cat ./partials/zaliases.firewalld >> ~/.zaliases
 fi
 
-
 echo "source ~/.zaliases" >> ~/.zshrc
+
+plins=""
+
+echo "Choose ZSH plugins:"
+
+# common aliases
+echo -n "common aliases: [y/N] "
+read caplugin
+if [[ $caplin == "y" ]]; then plins="common-aliases $plins"; fi
+
+# git
+echo -n "git/gitfast/git-extras: [y/N] "
+read gitplin
+if [[ $gitplin == "y" ]]; then plins="git gitfast git-extras $plins"; fi
+
+# ubuntu
+echo -n "systemd: [y/N] "
+read systemdplin
+if [[ $systemdplin == "y" ]]; then plins="systemd $plins"; fi
+
+# ubuntu
+echo -n "ubuntu: [y/N] "
+read ubuntuplin
+if [[ $ubuntuplin == "y" ]]; then plins="ubuntu $plins"; fi
+
+# rails
+echo -n "rails: [y/N] "
+read railsplin
+if [[ $railsplin == "y" ]]; then plins="rails gem rake $plins"; fi
+
+# centos
+echo -n "yum: [y/N] "
+read yumplin
+if [[ $yumplin == "y" ]]; then plins="yum $plins"; fi
+
+# osx
+echo -n "osx/brew: [y/N] "
+read osxplin
+if [[ $osxplin == "y" ]]; then plins="osx brew $plins"; fi
+
+# node development
+echo -n "node/npm/gulp: [y/N] "
+read nodeplin
+if [[ $nodeplin == "y" ]]; then plins="node npm gulp $plins"; fi
+
+# zsh-syntax-highlighting
+echo -n "zsh-syntax-highlighting: [y/N] "
+read zshshplin
+if [[ $zshshplin == "y" ]]; then plins="zsh-syntax-highlighting $plins"; fi
+
+# insert plugins into zshrc
+# -i for osx compatibility
+sed -i ".bak" "/^plugins=/ s/plugins=\((.*)\)/plugins=\($plins\)/" ~/.zshrc

@@ -1,17 +1,18 @@
 #!/bin/bash
 
+echo detect OS
 OS=$(uname -s)
 
-# install ZSH
+echo install ZSH
 sudo apt-get install zsh
 
-# install oh-my-zsh
+echo install oh-my-zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
-# install zsh-syntax-highlighting
+echo install zsh-syntax-highlighting
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 
-# copy theme and choose it
+echo copy theme and select it
 cp ./robjtede.zsh-theme ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/
 exp="/^ZSH_THEME=/ s/ZSH_THEME=\".*\"/ZSH_THEME=\"robjtede\"/"
 if [[ $OS == "Linux" ]]; then
@@ -21,7 +22,7 @@ elif [[ $OS == "Darwin" ]]; then
 fi
 
 
-# uncomment and change update frequency
+echo uncomment and change update frequency
 exp1="/^\(# \)?export UPDATE_ZSH_DAYS=[0-9]+/ s/^\(# \)?//"
 exp2="/^\(# \)?export UPDATE_ZSH_DAYS=[0-9]+/ s/[0-9]+/6/"
 
@@ -33,7 +34,7 @@ elif [[ $OS == "Darwin" ]]; then
   sed -i ".bak" -E -e $exp2 -f ~/.zshrc
 fi
 
-# uncomment correction and waiting dots
+echo uncomment correction and waiting dots
 exp1="/^\(# \)?ENABLE_CORRECTION=/ s/^\(# \)\?//"
 exp2="/^\(# \)?COMPLETION_WAITING_DOTS=/ s/^\(# \)\?//"
 
@@ -45,10 +46,10 @@ elif [[ $OS == "Darwin" ]]; then
   sed -i ".bak" -E -e $exp2 -f ~/.zshrc
 fi
 
-# insert primary aliases
+echo copy aliases file
 cp ./zaliases ~/.zaliases
 
-# choose aliases
+echo choose optional aliases
 
 echo -n "Do you want firewalld aliases? [y/N] "
 read fwd
@@ -57,6 +58,7 @@ if [[ $fwd == "y" ]]; then
   cat ./partials/zaliases.firewalld >> ~/.zaliases
 fi
 
+echo source aliases
 echo "source ~/.zaliases" >> ~/.zshrc
 
 plins=""

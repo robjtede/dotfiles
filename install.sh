@@ -13,6 +13,14 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:
 cp ./robjtede.zsh-theme ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/
 sed -i ".bak" "/^ZSH_THEME=/ s/ZSH_THEME=\".*\"/ZSH_THEME=\"robjtede\"/" ~/.zshrc
 
+# uncomment and change update frequency
+sed -i ".bak" "/^\(# \)\{0,1\}export UPDATE_ZSH_DAYS=[0-9]\{1,\}/ s/\(# \)\{0,1\}//" ~/.zshrc
+sed -i ".bak" "/^\(# \)\{0,1\}export UPDATE_ZSH_DAYS=[0-9]\{1,\}/ s/[0-9]\{1,\}/6/" ~/.zshrc
+
+# uncomment correction and waiting dots
+sed -i ".bak" "/^\(# \)\{0,1\}ENABLE_CORRECTION=\{1,\}/ s/\(# \)\{0,1\}//" ~/.zshrc
+sed -i ".bak" "/^\(# \)\{0,1\}COMPLETION_WAITING_DOTS=\{1,\}/ s/\(# \)\{0,1\}//" ~/.zshrc
+
 # insert primary aliases
 cat ./zaliases > ~/.zaliases
 

@@ -13,7 +13,7 @@ echo install zsh-syntax-highlighting
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 
 echo copy theme and select it
-cp ./robjtede.zsh-theme ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/
+cp -i ./robjtede.zsh-theme ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/
 exp="/^ZSH_THEME/ s/ZSH_THEME=\"[^\"]*\"/ZSH_THEME=\"robjtede\"/"
 if [[ $OS == "Linux" ]]; then
   sed -i.bak -r -e "$exp" ~/.zshrc
@@ -46,7 +46,7 @@ elif [[ $OS == "Darwin" ]]; then
 fi
 
 echo copy aliases file
-cp ./zaliases ~/.zaliases
+cp -i ./zaliases ~/.zaliases
 
 echo choose optional aliases
 
@@ -127,10 +127,10 @@ preexec () {
 
 
 # copy dotfiles
-cp ./screenrc ~/.screenrc
-cp ./vimrc ~/.vimrc
-cp ./iftoprc ~/.iftoprc
-cp ./zprofile ~/.zprofile
+cp -i ./screenrc ~/.screenrc
+cp -i ./vimrc ~/.vimrc
+cp -i ./iftoprc ~/.iftoprc
+cp -i ./zprofile ~/.zprofile
 
 chsh --shell=$(which zsh)
 zsh

@@ -72,7 +72,6 @@
     "Alpha Component" : 1,
     "Green Component" : 0.26474356651306152
   },
-  "Has Hotkey" : false,
   "Blinking Cursor" : true,
   "Selected Text Color (Light)" : {
     "Red Component" : 0,
@@ -90,12 +89,13 @@
   },
   "Cursor Type" : 1,
   "Keyboard Map" : {
-    "0x19-0x60000-0x30" : {
-      "Version" : 2,
-      "Apply Mode" : 0,
-      "Action" : 2,
-      "Text" : "",
-      "Escaping" : 2
+    "0x7f-0x80000" : {
+      "Action" : 11,
+      "Text" : "0x1b 0x7f"
+    },
+    "0xf702-0x280000" : {
+      "Action" : 10,
+      "Text" : "b"
     },
     "0x9-0x40000-0x30" : {
       "Version" : 2,
@@ -103,6 +103,37 @@
       "Action" : 0,
       "Text" : "",
       "Escaping" : 2
+    },
+    "0x19-0x60000-0x30" : {
+      "Version" : 2,
+      "Apply Mode" : 0,
+      "Action" : 2,
+      "Text" : "",
+      "Escaping" : 2
+    },
+    "0xf702-0x300000" : {
+      "Action" : 11,
+      "Text" : "0x1"
+    },
+    "0xf703-0x280000" : {
+      "Action" : 10,
+      "Text" : "f"
+    },
+    "0xf728-0x80000" : {
+      "Action" : 10,
+      "Text" : "d"
+    },
+    "0xf703-0x300000" : {
+      "Action" : 11,
+      "Text" : "0x5"
+    },
+    "0xf728-0x0" : {
+      "Action" : 11,
+      "Text" : "0x4"
+    },
+    "0x7f-0x100000" : {
+      "Action" : 11,
+      "Text" : "0x15"
     }
   },
   "AWDS Pane Option" : "Recycle",
@@ -168,7 +199,7 @@
   },
   "Silence Bell" : false,
   "Rows" : 25,
-  "Guid" : "80103F13-66E8-40DB-B461-535629B4AD2E",
+  "Guid" : "EFE3CF24-46F9-4A45-B794-2BB5EF2C5970",
   "Ansi 14 Color (Dark)" : {
     "Red Component" : 0.37597531080245972,
     "Color Space" : "sRGB",
@@ -254,9 +285,6 @@
     "Green Component" : 0
   },
   "Vertical Spacing" : 1,
-  "Bound Hosts" : [
-
-  ],
   "Disable Window Resizing" : true,
   "Close Sessions On End" : true,
   "Selection Color (Dark)" : {
@@ -371,7 +399,7 @@
     "Alpha Component" : 1,
     "Green Component" : 0.23660069704055786
   },
-  "Name" : "robjtede",
+  "Name" : "Default",
   "Transparency" : 0,
   "Horizontal Spacing" : 1,
   "Cursor Color (Dark)" : {
